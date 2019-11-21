@@ -1,5 +1,22 @@
 const { ApolloServer , gql } = require('apollo-server');
+const usuarios = [
+                    {
+                        id:1,
+                        nome:'Vitor Vicente',
+                        email:'vi_dualcore@hotmail.com'
+                    },
+                    {
+                        id:2,
+                        nome:'Vitor Silva',
+                        email:'kayke@gmail.com'
+                    },
+                    {
+                        id:3,
+                        nome:'Vinicius',
+                        email:'loopinfinite@gmail.com'
+                    }
 
+                ];
 const typeDefs = gql`
             #criando tipos de dados
 
@@ -25,11 +42,17 @@ const typeDefs = gql`
             }
             #pontos de entrada da minha api!     sinal de obrigatorio !
             #consulta ola do tipo de retorno string
+            #[type!]! estou dizendo aqui que esse array nao pode ser nulo e seu tipo tem que set obrigatoriamente inteiro
+
+
             type Query {
                   ola: String
                   horaAtual: Date
                   usuarioLogado: Usuario
                   TipoProduto: Produto
+                  numerosMegaSena: [Int!]!   
+                  usuarios:[Usuario]!
+                  usuario(id: ID): Usuario
             }
 `
 
@@ -71,6 +94,22 @@ const resolvers = {
                      preco:100.00,
                      desconto:0.05
               }
+          },
+
+          numerosMegaSena(){
+                const crescente = (a,b) => a + b;
+
+                return Array(6).fill(0)
+                       .map(n => parseInt(Math.random() * 60 + 1))
+                       .sort(crescente);
+          },
+          usuarios(){
+                return  usuarios;
+          },
+
+          usuario(_,{ id }){
+                   const sels = usuarios.filter(u => u.id == id)
+                   return sels ? sels[0] : null
           }
      }
 }
