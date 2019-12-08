@@ -1,5 +1,22 @@
 const { ApolloServer , gql } = require('apollo-server');
-
+const usuarios = [
+       {
+            id:1,
+            nome:'vitor vicente',
+            email:'vi_dualcore@hotmail.com',
+            idade:30
+       },{
+            id:2,
+            nome:'vinicius vicente',
+            email:'vinicius@hotmail.com',
+            idade:20
+       },{
+            id:3,
+            nome:'regia mikaelle',
+            email:'regia@mica.com',
+            idade:22
+       }
+];
 const typeDefs = gql`
             #criando tipos de dados
 
@@ -29,7 +46,10 @@ const typeDefs = gql`
                   ola: String
                   horaAtual: Date
                   usuarioLogado: Usuario
-                  TipoProduto: Produto
+                  TipoProduto: Produto,
+                  numerosMegaSena: [Int!]!  #sintaxe array graphQL obrigatorio me retornar somentes inteiros, e nao nulos 
+                  usuarios:[Usuario!]!
+                  usuario(id: ID): Usuario
             }
 `
 
@@ -71,6 +91,21 @@ const resolvers = {
                      preco:100.00,
                      desconto:0.05
               }
+          },
+
+          numerosMegaSena(){
+                const crescente = (a,b) => a - b;
+                return Array(6).fill(0)
+                       .map(n => parseInt(Math.random() *60 + 1))
+                       .sort(crescente);
+          },
+          usuarios(){
+                return usuarios
+          },
+          usuario(_,{ id }){
+                  const selecionados = usuarios
+                        .filter(u => u.id == id)
+                return selecionados ? selecionados[0] : null
           }
      }
 }
