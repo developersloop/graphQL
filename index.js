@@ -1,4 +1,15 @@
 const { ApolloServer , gql } = require('apollo-server');
+const perfis = [
+       {
+            id: 1,
+            name: 'vitor vicente',
+            perfil: 'Adiministrador', 
+       },{
+            id:2,
+            name:'patrick meneguel',
+            perfil:'Comum'
+       }
+]
 const usuarios = [
        {
             id:1,
@@ -31,7 +42,12 @@ const typeDefs = gql`
                 idade: Int
                 salario:Float
                 vip:Boolean
-                
+            }
+
+            type Perfil{
+                 id: ID!
+                 name:String!
+                 perfil:String!
             }
 
             type Produto {
@@ -50,6 +66,8 @@ const typeDefs = gql`
                   numerosMegaSena: [Int!]!  #sintaxe array graphQL obrigatorio me retornar somentes inteiros, e nao nulos 
                   usuarios:[Usuario!]!
                   usuario(id: ID): Usuario
+                  perfis:[Perfil!]!
+                  perfil(id: ID): Perfil
             }
 `
 
@@ -106,7 +124,14 @@ const resolvers = {
                   const selecionados = usuarios
                         .filter(u => u.id == id)
                 return selecionados ? selecionados[0] : null
-          }
+          },
+          perfis(){
+                return perfis
+          },
+           perfil(_,{ id }){
+              const sel = perfis.filter(p => p.id == id);
+              return sel ? sel[0] : null
+           }
      }
 }
 
