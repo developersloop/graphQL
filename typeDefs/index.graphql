@@ -1,0 +1,9 @@
+module.exports = function(gql){
+      return  gql`
+            #criando tipos de dados
+
+            # tipos de dados grap string float int boolean e ID
+
+          
+        `
+}

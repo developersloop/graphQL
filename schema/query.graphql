@@ -1,0 +1,13 @@
+  #pontos de entrada da minha api!     sinal de obrigatorio !
+            #consulta ola do tipo de retorno string
+            type Query {
+                  ola: String
+                  horaAtual: Date
+                  usuarioLogado: Usuario
+                  TipoProduto: Produto,
+                  numerosMegaSena: [Int!]!  #sintaxe array graphQL obrigatorio me retornar somentes inteiros, e nao nulos 
+                  usuarios:[Usuario!]!
+                  usuario(id: ID): Usuario
+                  perfis:[Perfil!]!
+                  perfil(id: ID): Perfil
+            }
