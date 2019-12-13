@@ -1,9 +1,27 @@
+const linguagens = [
+       {
+          id:1,
+          nome:'PHP',
+          experience:'SIM'
+       },{
+          id:2,
+          nome:'PYTHON',
+          experience:'NAO'
+       },{
+          id:3,
+          nome:'JAVA',
+          experience:'SIM'
+       }
+]
+
 const perfis = [
     {
          id: 1,           
+         lang_id:1,
          name: 'Adiministrador', 
     },{
          id:2,
+         lang_id:2,
          name:'Comum'
     }
 ]
@@ -32,4 +50,4 @@ const usuarios = [
     }
 ];
 
-module.exports = { usuarios,perfis}
+module.exports = { usuarios,perfis,linguagens}

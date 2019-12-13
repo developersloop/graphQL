@@ -8,5 +8,5 @@ module.exports = {
             const sel = perfis
                   .filter(p => p.id == perfil_id)
                   return sel ? sel[0] : null
-      }
+      },
 }

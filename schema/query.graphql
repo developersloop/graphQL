@@ -10,4 +10,5 @@
                   usuario(id: ID): Usuario
                   perfis:[Perfil!]!
                   perfil(id: ID): Perfil
+                  languages:[Linguagens]!
             }

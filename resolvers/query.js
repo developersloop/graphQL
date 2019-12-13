@@ -1,4 +1,4 @@
-const {usuarios, perfis }  = require('../data/db');
+const {usuarios, perfis, linguagens }  = require('../data/db');
 
 module.exports = {
       ola(){
@@ -33,7 +33,6 @@ module.exports = {
                     .sort(crescente);
        },
        usuarios(){
-             console.log('adad');
              return usuarios
        },
        usuario(_,{ id }){
@@ -47,5 +46,6 @@ module.exports = {
         perfil(_,{ id }){
            const sel = perfis.filter(p => p.id == id);
            return sel ? sel[0] : null
-        }
+        },
+
 }

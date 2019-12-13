@@ -1,23 +1,35 @@
-           
-           enum UsuarioStatus {
-                ATIVO
-                INATIVO
-                BLOQUEADO
-           }
 
-           type Usuario{
-                id: ID!
-                nome: String!
-                email: String!
-                idade: Int
-                salario:Float
-                vip:Boolean
-                perfil:Perfil,
-                status:UsuarioStatus
-            }
+enum UsuarioStatus {
+     ATIVO
+     INATIVO
+     BLOQUEADO
+}
 
-            type Perfil{
-                 id: ID!
-                 name:String!
-                 perfil:String!
-            }
+type Usuario{
+     id: ID!
+     nome: String!
+     email: String!
+     idade: Int
+     salario:Float
+     vip:Boolean
+     perfil:Perfil,
+     status:UsuarioStatus
+}
+
+type Perfil{
+     id: ID!
+     name:String!
+     perfil:String!,
+     languages:Linguagens
+}
+
+enum work{
+      SIM,
+      NAO
+}
+
+type Linguagens{
+     id:ID!,
+     nome:String!
+     experience:work
+}
