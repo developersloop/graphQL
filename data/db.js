@@ -1,3 +1,7 @@
+let id = 1;
+const nextId = function(){
+     return id++;
+}
 const linguagens = [
        {
           id:1,
@@ -34,14 +38,14 @@ const usuarios = [
          perfil_id:1,
          status:'ATIVO'
     },{
-         id:2,
+         id:nextId,
          nome:'vinicius vicente',
          email:'vinicius@hotmail.com',
          idade:20,
          perfil_id:2,
          status:"INATIVO"
     },{
-         id:3,
+         id:nextId,
          nome:'regia mikaelle',
          email:'regia@mica.com',
          idade:22,
@@ -50,4 +54,4 @@ const usuarios = [
     }
 ];
 
-module.exports = { usuarios,perfis,linguagens}
+module.exports = { usuarios,perfis,linguagens,nextId}

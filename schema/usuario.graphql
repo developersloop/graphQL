@@ -33,3 +33,15 @@ type Linguagens{
      nome:String!
      experience:work
 }
+
+input usuarioInput  {
+       nome:String,
+       email:String,
+       idade:Int
+
+}
+
+input filtroUsuario{
+        id:Int!,
+        email:String
+}

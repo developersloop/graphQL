@@ -1,0 +1,9 @@
+type Mutation {
+     novoUsuario(
+         dados:usuarioInput!
+     ): Usuario!
+     excluirUsuario(
+          filtro:filtroUsuario!
+     ):Usuario!
+     editarUsuario(id:Int,nome:String,email:String,idade:Int): Usuario!
+}
