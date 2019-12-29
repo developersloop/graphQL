@@ -1,4 +1,4 @@
-const { usuarios, nextId } = require('../data/db');
+const { usuarios, nextId } = require('../../data/db');
 
 
 function indiceUsuario(filtro){
@@ -6,7 +6,8 @@ function indiceUsuario(filtro){
     const { id, email}  = filtro;
 
     if(id){
-        return usuarios.findIndex(i => i.id === id);
+        // console.log('caiu aqui');
+        return usuarios.findIndex(i => i.id == id);
     }else if(email){
         return usuarios.findIndex(u => u.email === email);
     }
@@ -41,17 +42,22 @@ module.exports = {
         return excluidos ? excluidos[0] : null
     },
 
-    editarUsuario(_,args){
-          const i = usuarios.findIndex(i => i.id === args.id);
-
+    editarUsuario(_, { filtro,dados }){
+          const i = indiceUsuario(filtro);
+        //   console.log(filtro.id);
           if(i < 0) return null
 
-          const usuario = {
-               ...usuarios,
-               ...args
-          }
-          usuarios.splice(i,1,usuario)
+
+          usuarios[i].nome = dados.nome;
+          usuarios[i].email = dados.email
+        //   const usuario = {
+        //        ...usuarios,
+        //        ...dados
+        //   }
+        // //   usuarios.splice(i,1,usuario)
+
+        //   console.log(usuarios);
         
-          return usuario;
+          return usuarios[i];
     }
 }

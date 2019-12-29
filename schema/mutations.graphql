@@ -1,0 +1,13 @@
+type Mutation {
+    
+    # crud usuarios
+      novoUsuario(dados:usuarioInput):Usuario!
+      excluirUsuario(filtro:filtroUsuario):Usuario!
+      editarUsuario(filtro:filtroUsuario,dados:usuarioInput):Usuario!
+    
+    # crud perfis
+
+     novoPerfil(dados:perfilInput):Perfil!
+     excluirPerfil(filtro:filtroPerfil):Perfil!
+     editarPerfil(filtro:filtroPerfil,dados:perfilInput):Perfil!
+}

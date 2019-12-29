@@ -16,12 +16,7 @@ type Usuario{
      status:UsuarioStatus
 }
 
-type Perfil{
-     id: ID!
-     name:String!
-     perfil:String!,
-     languages:Linguagens
-}
+
 
 enum work{
       SIM,
@@ -45,3 +40,5 @@ input filtroUsuario{
         id:Int!,
         email:String
 }
+
+

@@ -21,11 +21,11 @@ const linguagens = [
 const perfis = [
     {
          id: 1,           
-         lang_id:1,
+     //     lang_id:1,
          name: 'Adiministrador', 
     },{
          id:2,
-         lang_id:2,
+     //     lang_id:2,
          name:'Comum'
     }
 ]
